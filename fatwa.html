@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Faiz-e-Raza | Fatwa AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Roboto&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Amir', serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #fffdfb, #fce4ec);
+    color: #4a148c;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    background: #4a148c;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  textarea {
+    width: 100%;
+    height: 120px;
+    font-size: 18px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #4a148c;
+    margin-top: 20px;
+    resize: none;
+    box-sizing: border-box;
+  }
+  button {
+    margin-top: 16px;
+    padding: 14px 28px;
+    background: #880e4f;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  button:hover {
+    background: #ad1457;
+  }
+  #response, #infoBox {
+    margin-top: 24px;
+    padding: 20px;
+    background: #fff3e0;
+    border-left: 6px solid #880e4f;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    white-space: pre-wrap;
+  }
+  #cta {
+    margin-top: 12px;
+    font-style: italic;
+    color: #880e4f;
+  }
+</style>
+</head>
+<body><h1>Faiz-e-Raza ⚖️ Fatwa AI</h1><textarea id="question" placeholder="Apna Sawal yahan likhein..."></textarea><br /><button id="askBtn">Fatwa Talab Karein</button>
+
+<div id="response" style="display:none;"></div>
+<div id="cta" style="display:none;">Follow Us on Instagram @Faiz_e_Raza</div><div id="infoBox">
+  <strong>Note:</strong> Yeh AI Fatwa Service hai jo sirf Ahl-e-Sunnat Wal Jamaat (Hanafi, Barelvi) ke mutabiq jawab deti hai. Magar AI ghalti kar sakti hai, barah-e-karam hamesha kisi mo'tabar Sunni Mufti se tasdeeq zarur farmaayein.
+  <br /><br />
+  <em>Website developed by <strong>Syed Ebad Ali Shah Qadri</strong> under <strong>#AnakHadimEAhleSunnat</strong>.</em>
+</div><script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script><script>
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyD0DHTlknog2qmBkViOkkqsY7co57fnZKM",
+    authDomain: "faiz-e-raza-kziv0.firebaseapp.com",
+    databaseURL: "https://faiz-e-raza-kziv0-default-rtdb.firebaseio.com",
+    projectId: "faiz-e-raza-kziv0",
+    storageBucket: "faiz-e-raza-kziv0.firebasestorage.app",
+    messagingSenderId: "614396372677",
+    appId: "1:614396372677:web:42ad4e1baedf6bbb6b72ac"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script><script>
+const askBtn = document.getElementById('askBtn');
+const questionInput = document.getElementById('question');
+const responseDiv = document.getElementById('response');
+const ctaDiv = document.getElementById('cta');
+
+askBtn.addEventListener('click', async () => {
+  const question = questionInput.value.trim();
+  if (!question) {
+    alert('Barah-e-karam apna sawal likhein.');
+    return;
+  }
+
+  responseDiv.style.display = 'block';
+  responseDiv.textContent = 'Jawab tayar kia ja raha hai...';
+  ctaDiv.style.display = 'none';
+
+  const apiKey = "AIzaSyBgdOLxG5QXWZUWWvgRlOhiVGeL6zaviHo";
+  const requestBody = {
+    contents: [
+      {
+        parts: [
+          {
+            text: `You are an Islamic Mufti answering strictly according to Ahl-e-Sunnat Wal Jamaat (Barelvi, Hanafi) beliefs. Only use authentic Barelvi sources. 
+End every answer with: 'Follow Us on Instagram @Faiz_e_Raza'
+
+Question: ${question}`
+          }
+        ]
+      }
+    ]
+  };
+
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody)
+    });
+
+    const data = await res.json();
+    const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Koi jawab nahi mila.';
+    responseDiv.textContent = answer;
+    ctaDiv.style.display = 'block';
+
+    // Save to Firebase
+    db.ref("fatwas").push({
+      question: question,
+      answer: answer,
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    responseDiv.textContent = 'Error: ' + err.message;
+    ctaDiv.style.display = 'none';
+    console.error(err);
+  }
+});
+</script></body>
+</html>
