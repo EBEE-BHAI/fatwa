@@ -1,145 +1,408 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Faiz-e-Raza | Fatwa AI</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Roboto&display=swap" rel="stylesheet">
+<!-- Essential Meta Tags -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darul Iftaha AhleSunnat | Faiz E Raza AI Fatwa Portal</title>
+<meta name="description" content="Get instant Ahlesunnat fatwas from Darul Iftaha AhleSunnat via AI. Trusted Barelvi rulings with references from Fatawa Razawiyya & Bahar-e-Shariat.">
+<meta name="keywords" content="Faiz E Raza, Darul Iftaha AhleSunnat, Ahlesunnat fatwa, AI fatwa, Islamic fatwa Barelvi, fatawa razawiyya, Bahar e Shariat, Sunni fatwa AI, Ahlesunnat rulings, Faiz E Raza fatwa, Sunni Islamic AI, Ahle Sunnat Wal Jamaat fatwa, AI Darul Ifta, Deeniyat AI assistant, Barelvi Islamic fatwa, Ahlesunnat AI fatwa, Sunni AI chatbot, Faiz-e-Raza.com">
+<meta name="author" content="Faiz-e-Raza Team">
+
+<!-- Open Graph Meta Tags (For Facebook, WhatsApp, etc.) -->
+<meta property="og:title" content="Darul Iftaha AhleSunnat | Faiz E Raza AI Fatwa Portal">
+<meta property="og:description" content="Ask AI-based Barelvi fatwas directly from Darul Iftaha AhleSunnat. Based on Fatawa Razawiyya and Bahar-e-Shariat. 100% Ahlesunnat approved.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.faizeraza.netlify.app/">
+<meta property="og:image" content="https://www.faizeraza.netlify.app/assets/fatwa-banner.jpg">
+<meta property="og:site_name" content="Faiz-e-Raza - Darul Iftaha AhleSunnat">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Darul Iftaha AhleSunnat | Faiz E Raza AI Fatwa Portal">
+<meta name="twitter:description" content="Get fast AI-based Ahlesunnat fatwas with authentic references. Powered by Darul Iftaha AhleSunnat.">
+<meta name="twitter:image" content="https://www.faizeraza.netlify.app/assets/fatwa-banner.jpg">
+<meta name="twitter:site" content="@FaizERaza"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --color-primary: #8e24aa; /* Deep Purple */
+    --color-secondary: #5e35b1; /* Amethyst */
+    --color-tertiary: #c2185b; /* Raspberry */
+    --color-accent: #ffd700; /* Gold */
+    --color-text-dark: #333;
+    --color-text-light: #f8f8f8;
+    --color-bg-light: #fefefe;
+    --color-bg-medium: #fce4ec; /* Light Pink */
+    --shadow-subtle: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+
+    /* New: WhatsApp button specific color */
+    --color-whatsapp: #25d366; /* WhatsApp green */
+  }
+
   body {
-    font-family: 'Amir', serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
-    background: linear-gradient(to bottom, #fffdfb, #fce4ec);
-    color: #4a148c;
-    padding: 20px;
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, #f7f7f7 100%);
+    color: var(--color-text-dark);
+    padding: 25px;
     box-sizing: border-box;
+    line-height: 1.7;
+    overflow-x: hidden;
   }
-  h1 {
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 36px;
-    background: #4a148c;
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+  /* Super Header (Smaller) */
+  .super-header {
+    background: linear-gradient(45deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-text-light);
+    padding: 18px 35px; /* Reduced padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px; /* Slightly less rounded */
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px var(--shadow-medium);
+    animation: headerAppear 0.7s ease-out forwards;
+    position: relative;
+    overflow: hidden;
   }
+
+  @keyframes headerAppear {
+    from {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Header background pattern */
+  .super-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 10%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(255,255,255,0.05) 10%, transparent 40%);
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .super-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em; /* Smaller font size */
+    margin: 0;
+    letter-spacing: 1.2px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .super-header button#latestFatwasBtn {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    border: none;
+    padding: 10px 22px; /* Smaller button */
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 6px var(--shadow-subtle);
+    position: relative;
+    z-index: 1;
+  }
+
+  .super-header button#latestFatwasBtn:hover {
+    background-color: #ffc107; /* Slightly richer gold */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 10px var(--shadow-medium);
+  }
+
+  /* Main Content Area */
+  .container {
+    max-width: 750px; /* Slightly narrower for focus */
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
   textarea {
     width: 100%;
-    height: 120px;
-    font-size: 18px;
-    padding: 14px;
+    height: 160px; /* Slightly smaller height */
+    font-size: 1.05em;
+    padding: 18px;
     border-radius: 12px;
-    border: 2px solid #4a148c;
-    margin-top: 20px;
-    resize: none;
+    border: 1px solid #ddd; /* Lighter border */
+    margin-top: 25px;
+    resize: vertical;
     box-sizing: border-box;
+    box-shadow: 0 4px 12px var(--shadow-subtle);
+    transition: all 0.3s ease;
   }
-  button {
-    margin-top: 16px;
-    padding: 14px 28px;
-    background: #880e4f;
-    color: white;
-    font-size: 16px;
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-tertiary); /* Raspberry focus color */
+    box-shadow: 0 4px 18px rgba(194, 24, 91, 0.2);
+  }
+
+  /* Button Group */
+  .button-group {
+    display: flex; /* Arrange buttons in a row */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 15px; /* Space between buttons */
+    margin-top: 25px;
+    justify-content: center; /* Center buttons horizontally */
+  }
+
+  .button-group button {
+    flex: 1; /* Allow buttons to grow and shrink */
+    min-width: 200px; /* Minimum width for buttons */
+    padding: 15px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px var(--shadow-subtle);
   }
-  button:hover {
-    background: #ad1457;
+
+  /* Specific styles for Ask button */
+  button#askBtn {
+    background: linear-gradient(90deg, var(--color-tertiary) 0%, var(--color-primary) 100%);
+    color: var(--color-text-light);
   }
+
+  button#askBtn:hover {
+    background: linear-gradient(90deg, #ad1457 0%, #7b1fa2 100%); /* Darker on hover */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+  }
+
+  /* Specific styles for WhatsApp button */
+  button#whatsappBtn {
+    background: linear-gradient(90deg, var(--color-tertiary) 0%, var(--color-primary) 100%);
+    color: var(--color-text-light);
+}
+
+  button#whatsappBtn:hover {
+    background-color: #20b854; /* Slightly darker WhatsApp green */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+  }
+
+
   #response, #infoBox {
-    margin-top: 24px;
-    padding: 20px;
-    background: #fff3e0;
-    border-left: 6px solid #880e4f;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 30px;
+    padding: 28px;
+    background-color: var(--color-bg-medium);
+    border-left: 5px solid var(--color-accent);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px var(--shadow-subtle);
     white-space: pre-wrap;
+    font-size: 1em;
+    animation: elementFadeIn 0.6s ease-out forwards;
+    opacity: 0;
   }
+
+  @keyframes elementFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   #cta {
-    margin-top: 12px;
+    margin-top: 18px;
     font-style: italic;
-    color: #880e4f;
+    color: var(--color-tertiary);
+    text-align: center;
+    font-size: 1.05em;
+    animation: elementFadeIn 0.6s ease-out 0.2s forwards; /* Slight delay for CTA */
+    opacity: 0;
+  }
+
+  #infoBox strong {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  #infoBox em {
+    color: var(--color-tertiary);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 15px;
+    }
+    .super-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 15px 15px;
+    }
+    .super-header h1 {
+      font-size: 1.8em;
+      margin-bottom: 12px;
+    }
+    .super-header button#latestFatwasBtn {
+      font-size: 0.9em;
+      padding: 8px 18px;
+    }
+    textarea {
+      height: 130px;
+      font-size: 0.95em;
+      padding: 15px;
+    }
+    .button-group {
+      flex-direction: column; /* Stack buttons vertically on small screens */
+      gap: 10px;
+    }
+    .button-group button {
+      min-width: unset; /* Remove min-width for full width */
+      width: 100%; /* Make buttons full width */
+      font-size: 1.05em;
+      padding: 12px 25px;
+    }
+    #response, #infoBox {
+      padding: 20px;
+      font-size: 0.9em;
+    }
   }
 </style>
 </head>
-<body><h1>Faiz-e-Raza ⚖️ Fatwa AI</h1><textarea id="question" placeholder="Apna Sawal yahan likhein..."></textarea><br /><button id="askBtn">Fatwa Talab Karein</button>
+<body>
+  <div class="super-header">
+    <h1>Faiz-e-Raza ⚖️ Fatwa AI</h1>
+    <button id="latestFatwasBtn" onclick="window.location.href='https://fatwa.com';">See Latest Fatwas</button>
+  </div>
 
-<div id="response" style="display:none;"></div>
-<div id="cta" style="display:none;">Follow Us on Instagram @Faiz_e_Raza</div><div id="infoBox">
-  <strong>Note:</strong> Yeh AI Fatwa Service hai jo sirf Ahl-e-Sunnat Wal Jamaat (Hanafi, Barelvi) ke mutabiq jawab deti hai. Magar AI ghalti kar sakti hai, barah-e-karam hamesha kisi mo'tabar Sunni Mufti se tasdeeq zarur farmaayein.
-  <br /><br />
-  <em>Website developed by <strong>Syed Ebad Ali Shah Qadri</strong> under <strong>#AnakHadimEAhleSunnat</strong>.</em>
-</div><script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script><script>
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyD0DHTlknog2qmBkViOkkqsY7co57fnZKM",
-    authDomain: "faiz-e-raza-kziv0.firebaseapp.com",
-    databaseURL: "https://faiz-e-raza-kziv0-default-rtdb.firebaseio.com",
-    projectId: "faiz-e-raza-kziv0",
-    storageBucket: "faiz-e-raza-kziv0.firebasestorage.app",
-    messagingSenderId: "614396372677",
-    appId: "1:614396372677:web:42ad4e1baedf6bbb6b72ac"
-  };
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-</script><script>
-const askBtn = document.getElementById('askBtn');
-const questionInput = document.getElementById('question');
-const responseDiv = document.getElementById('response');
-const ctaDiv = document.getElementById('cta');
+  <div class="container">
+    <textarea id="question" placeholder="Apna Sawal yahan likhein..."></textarea>
+    
+    <div class="button-group">
+      <button id="askBtn">Fatwa Talab Karein</button>
+      <button id="whatsappBtn" onclick="window.open('https://www.instagram.com/khadimofahlesunnat?igsh=bm0zMXRwNWwxZWdz', '_blank');">Follow Us On Instagram</button>
+    </div>
 
-askBtn.addEventListener('click', async () => {
-  const question = questionInput.value.trim();
-  if (!question) {
-    alert('Barah-e-karam apna sawal likhein.');
-    return;
-  }
+    <div id="response" style="display:none;"></div>
+    <div id="cta" style="display:none;">Follow Us on Instagram @khadimofahlesunnat</div>
+    <div id="infoBox">
+      <strong>Note:</strong> Yeh AI Fatwa Service hai jo sirf Ahl-e-Sunnat Wal Jamaat (Hanafi, Barelvi) ke mutabiq jawab deti hai. Magar AI ghalti kar sakti hai, barah-e-karam hamesha kisi mo'tabar Sunni Mufti se tasdeeq zarur farmaayein.
+      <br /><br />
+      <em>Website developed by <strong>Syed Ebad Ali Shah Qadri</strong> under <strong>#AnaKhadimeAhleSunnat</strong>.</em>
+    </div>
+  </div>
 
-  responseDiv.style.display = 'block';
-  responseDiv.textContent = 'Jawab tayar kia ja raha hai...';
-  ctaDiv.style.display = 'none';
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0DHTlknog2qmBkViOkkqsY7co57fnZKM",
+      authDomain: "faiz-e-raza-kziv0.firebaseapp.com",
+      databaseURL: "https://faiz-e-raza-kziv0-default-rtdb.firebaseio.com",
+      projectId: "faiz-e-raza-kziv0",
+      storageBucket: "faiz-e-raza-kziv0.firebasestorage.app",
+      messagingSenderId: "614396372677",
+      appId: "1:614396372677:web:42ad4e1baedf6bbb6b72ac"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
+  <script>
+    const askBtn = document.getElementById('askBtn');
+    const questionInput = document.getElementById('question');
+    const responseDiv = document.getElementById('response');
+    const ctaDiv = document.getElementById('cta');
 
-  const apiKey = "AIzaSyBgdOLxG5QXWZUWWvgRlOhiVGeL6zaviHo";
-  const requestBody = {
-    contents: [
-      {
-        parts: [
+    function generateRandomFatwaNumber() {
+      // Generates a random 10-digit number
+      return Math.floor(1000000000 + Math.random() * 9000000000).toString();
+    }
+
+    askBtn.addEventListener('click', async () => {
+      const question = questionInput.value.trim();
+      if (!question) {
+        alert('Barah-e-karam apna sawal likhein.');
+        return;
+      }
+
+      // Reset animation for response/cta
+      responseDiv.style.opacity = 0;
+      responseDiv.style.transform = 'translateY(20px)';
+      ctaDiv.style.opacity = 0;
+
+      responseDiv.style.display = 'block';
+      responseDiv.textContent = 'Jawab tayar kia ja raha hai...';
+      ctaDiv.style.display = 'none';
+
+      // Trigger animation for response div after slight delay
+      setTimeout(() => {
+        responseDiv.style.opacity = 1;
+        responseDiv.style.transform = 'translateY(0)';
+      }, 50);
+
+      const apiKey = "AIzaSyBgdOLxG5QXWZUWWvgRlOhiVGeL6zaviHo"; // Your actual API Key
+
+      const requestBody = {
+        contents: [
           {
-            text: `You are an Islamic Mufti answering strictly according to Ahl-e-Sunnat Wal Jamaat (Barelvi, Hanafi) beliefs. Only use authentic Barelvi sources If Anyone Ask You Any Masail/Question First Try To See If You Have Any Hadees To Answer That Question But If You Dont Have Any Hadees Then Answer It From Books Like Bahar E Shariat,Fatwa Razwiyya Etc But If You Found Hadees Then Give Answer According To Hadees And Then From Barelvi Books Means For Every Question Answer From Both Books Remember To Double Check Every Hadees You Are Going To Coat Beacuse There Are Many Fake Hadees Also So Double Check That What Haees YoubAre Referring Is The Same You Are Telling and Exist In Hadees Books (You Can Use Any Haddes book but never Tell accurate number of hadees only tell Book name) Also Answer Every Query With Roman Urdu/Easy Urdu. 
+            parts: [
+              {
+                text: `You are an Islamic Mufti answering strictly according to Ahl-e-Sunnat Wal Jamaat (Barelvi, Hanafi) beliefs. Only use authentic Barelvi sources If Anyone Ask You Any Masail/Question First Try To See If You Have Any Hadees To Answer That Question But If You Dont Have Any Hadees Then Answer It From Books Like Bahar E Shariat,Fatwa Razwiyya Etc But If You Found Hadees Then Give Answer According To Hadees And Then From Barelvi Books Means For Every Question Answer From Both Books Remember To Double Check Every Hadees You Are Going To Coat Beacuse There Are Many Fake Hadees Also So Double Check That What Haees YoubAre Referring Is The Same You Are Telling and Exist In Hadees Books (You Can Use Any Haddes book but never Tell accurate number of hadees only tell Book name) Also Answer Every Query With Roman Urdu/Easy Urdu. 
 End every answer with: 'Follow Us on Instagram @Faiz_e_Raza'
 
 Question: ${question}`
+              }
+            ]
           }
         ]
+      };
+
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
+        });
+
+        const data = await res.json();
+        const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Koi jawab nahi mila.';
+        responseDiv.textContent = answer;
+        ctaDiv.style.display = 'block';
+
+        // Trigger animation for CTA with a delay
+        setTimeout(() => {
+          ctaDiv.style.opacity = 1;
+          ctaDiv.style.transform = 'translateY(0)';
+        }, 300);
+
+        // Save to Firebase with random Fatwa number
+        const fatwaNumber = generateRandomFatwaNumber();
+        db.ref("fatwas").push({
+          fatwaNumber: fatwaNumber,
+          question: question,
+          answer: answer,
+          timestamp: new Date().toISOString()
+        });
+      } catch (err) {
+        responseDiv.textContent = 'Error: ' + err.message;
+        ctaDiv.style.display = 'none';
+        console.error(err);
       }
-    ]
-  };
-
-  try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(requestBody)
     });
-
-    const data = await res.json();
-    const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Koi jawab nahi mila.';
-    responseDiv.textContent = answer;
-    ctaDiv.style.display = 'block';
-
-    // Save to Firebase
-    db.ref("fatwas").push({
-      question: question,
-      answer: answer,
-      timestamp: new Date().toISOString()
-    });
-  } catch (err) {
-    responseDiv.textContent = 'Error: ' + err.message;
-    ctaDiv.style.display = 'none';
-    console.error(err);
-  }
-});
-</script></body>
+  </script>
+</body>
 </html>
