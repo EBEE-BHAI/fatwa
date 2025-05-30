@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hamare Bare Mein | Faiz-e-Raza | Fatwa AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #8e24aa; /* Deep Purple */
+    --color-secondary: #5e35b1; /* Amethyst */
+    --color-tertiary: #c2185b; /* Raspberry */
+    --color-accent: #ffd700; /* Gold */
+    --color-text-dark: #333;
+    --color-text-light: #f8f8f8;
+    --color-bg-light: #fefefe;
+    --color-bg-medium: #fce4ec; /* Light Pink */
+    --shadow-subtle: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, #f7f7f7 100%);
+    color: var(--color-text-dark);
+    padding: 25px;
+    box-sizing: border-box;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Super Header (reused from main page for consistency) */
+  .super-header {
+    background: linear-gradient(45deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-text-light);
+    padding: 18px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px var(--shadow-medium);
+    animation: headerAppear 0.7s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes headerAppear {
+    from {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .super-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 10%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(255,255,255,0.05) 10%, transparent 40%);
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .super-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    margin: 0;
+    letter-spacing: 1.2px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .super-header button {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 6px var(--shadow-subtle);
+    position: relative;
+    z-index: 1;
+  }
+
+  .super-header button:hover {
+    background-color: #ffc107;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 10px var(--shadow-medium);
+  }
+
+  /* About Us Specific Styles */
+  .about-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--color-bg-light);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow-medium);
+    animation: contentFadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes contentFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .about-container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .about-container h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  .about-container p {
+    font-size: 1.05em;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    text-align: justify;
+  }
+
+  .about-container p strong {
+    color: var(--color-tertiary);
+  }
+
+  .social-links {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .social-links a {
+    display: inline-block;
+    background-color: var(--color-tertiary);
+    color: var(--color-text-light);
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05em;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px var(--shadow-subtle);
+  }
+
+  .social-links a:hover {
+    background-color: #a7114b; /* Darker raspberry */
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+  }
+
+  .disclaimer {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: var(--color-bg-medium);
+    border-left: 5px solid var(--color-accent);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px var(--shadow-subtle);
+    font-style: italic;
+    color: var(--color-primary);
+  }
+
+  .disclaimer strong {
+    color: var(--color-tertiary);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 15px;
+    }
+    .super-header {
+      padding: 15px 15px;
+    }
+    .super-header h1 {
+      font-size: 1.8em;
+    }
+    .super-header button {
+      font-size: 0.9em;
+      padding: 8px 18px;
+    }
+    .about-container {
+      padding: 20px;
+    }
+    .about-container h2 {
+      font-size: 1.7em;
+    }
+    .about-container p {
+      font-size: 0.95em;
+    }
+    .social-links a {
+      font-size: 0.95em;
+      padding: 10px 20px;
+      margin: 8px;
+    }
+    .disclaimer {
+      padding: 18px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="super-header">
+    <h1>Faiz-e-Raza ⚖️ Fatwa AI</h1>
+    <button onclick="window.location.href='fatwa-ai.html';">Go Back</button>
+  </div>
+
+  <div class="about-container">
+    <h2>Faiz-e-Raza Aur Hamara Maqsad</h2>
+    <p>
+      <b>Faiz-e-Raza<b> mein aapka khair-maqdam hai! Yeh ek aisa platform hai jahan hum apne Sunni Bhaiyon aur Behno'n tak sahih Islami ilm ko aasani se pohanchane ki koshish karte hain. Aaj kal jahan har taraf maloomat ki bharmaar hai, humne mehsoos kiya ke ek aisi mustanad aur seedhi saadi zaroorat hai jahan Islami masail ke jawabat Ahl-e-Sunnat Wal Jamaat (Hanafi, Barelvi) ke usoolon ke mutabiq mil saken. Yeh website isi maqsad ko pura karne ki ek choti si koshish hai.
+    </p>
+    <p>
+      Is digital khidmat ko Syed Ebad Ali Shah Qadri ne banaya aur design kiya hai. Technology aur Islami ilm se bepanah mohabbat rakhne wale Syed Ebad Ali Shah Qadri ne is platform ko banane mein apni poori lagan aur mehnatt lagai hai. Unka maqsad yeh hai ke jadeed technology ko Islami taleemat se joda jaa sake, aur is tarah qaum ki khidmat ki jaa sake. Unki koshish hai ke yeh website sirf kaam ki na ho, balkay dekhne mein bhi dilkash ho, Islami tehzeeb ki khoobsurati ko numaya kare.
+    </p>
+    <p>
+      Faiz-e-Raza ko KhadimOfAhlesunnat ke tehat chalaya jaa raha hai. KhadimOfAhlesunnat ek social media organization hai jo Islami content share karti hai aur Ahl-e-Sunnat Wal Jamaat ke sahih aqeede ko phailane ka kaam karti hai. Humne kayi digital platforms ke zariye hazaron logon tak ilm aur roohani sukoon pohanchaya hai. Yeh website hamari usi khidmat ka ek naya zariya hai taake ilm ki talab karne walon ko aur aasani mil sake.
+    </p>
+    <p>
+      Hamara bunyadi maqsad Faiz-e-Raza ke zariye apne Sunni bhaiyon ko unke sawalon ke foran jawab dena hai. Lekin, yeh yaad rakhna behad zaroori hai ke yeh service ek AI model (Artificial Intelligence) istemal karti hai. Go ke is AI ko mustanad Ahl-e-Sunnat (Barelvi, Hanafi) kitabon se training di gayi hai, phir bhi yeh machine hai aur ghalti kar sakti hai ya kabhi adhoore jawab de sakti hai. Is liye, hum aapko sakhti se hidayat karte hain ke kisi bhi aham masle par hamesha kisi bharosemand aur mukammal ilm wale Sunni Mufti se dobara tasdeeq zaroor karwa lein. Aapka aqeeda qeemti hai, aur sahih ilm ki tasdeeq behad zaroori hai.
+    </p>
+
+    <div class="social-links">
+      <a href="https://www.instagram.com/syed.ebad.ali.shah" target="_blank">Syed Ebad Ali Shah Qadri (Instagram)</a>
+      <a href="https://www.instagram.com/khadimofahlesunnat" target="_blank">KhadimOfAhlesunnat (Instagram)</a>
+    </div>
+
+    <div class="disclaimer">
+      Elaan: Yeh AI Fatwa Service Ahl-e-Sunnat Wal Jamaat (Hanafi, Barelvi) ke usoolon ke mutabiq aam rehnumai ke liye hai. Yeh kisi mustanad Islami Mufti se direct mashware ka mutabadil nahi hai. Aham masail ke liye hamesha kisi bharosemand Mufti se tasdeeq zaroor karein.
+    </div>
+  </div>
+</body>
+</html>
