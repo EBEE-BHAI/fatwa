@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hum Se Rabta Karein | Faiz-e-Raza | Fatwa AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #8e24aa; /* Deep Purple */
+    --color-secondary: #5e35b1; /* Amethyst */
+    --color-tertiary: #c2185b; /* Raspberry */
+    --color-accent: #ffd700; /* Gold */
+    --color-text-dark: #333;
+    --color-text-light: #f8f8f8;
+    --color-bg-light: #fefefe;
+    --color-bg-medium: #fce4ec; /* Light Pink */
+    --shadow-subtle: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+
+    /* WhatsApp button specific color */
+    --color-whatsapp: #25d366; /* WhatsApp green */
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, #f7f7f7 100%);
+    color: var(--color-text-dark);
+    padding: 25px;
+    box-sizing: border-box;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Super Header (reused for consistency) */
+  .super-header {
+    background: linear-gradient(45deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-text-light);
+    padding: 18px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px var(--shadow-medium);
+    animation: headerAppear 0.7s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes headerAppear {
+    from {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .super-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 10%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(255,255,255,0.05) 10%, transparent 40%);
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .super-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    margin: 0;
+    letter-spacing: 1.2px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .super-header button {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 6px var(--shadow-subtle);
+    position: relative;
+    z-index: 1;
+  }
+
+  .super-header button:hover {
+    background-color: #ffc107;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 10px var(--shadow-medium);
+  }
+
+  /* Contact Us Specific Styles */
+  .contact-container {
+    max-width: 700px; /* Adjusted width for contact info */
+    margin: 0 auto;
+    padding: 40px; /* More padding for a luxurious feel */
+    background-color: var(--color-bg-light);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow-medium);
+    animation: contentFadeIn 0.8s ease-out forwards;
+    text-align: center; /* Center content */
+  }
+
+  @keyframes contentFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .contact-container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3em; /* Slightly larger heading */
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .contact-container h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px; /* Wider underline */
+    height: 4px; /* Thicker underline */
+    background-color: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  .contact-info {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between contact methods */
+  }
+
+  .contact-method {
+    background-color: var(--color-bg-medium);
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    gap: 15px; /* Space between icon/text */
+    transition: all 0.3s ease;
+  }
+
+  .contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--shadow-medium);
+  }
+
+  .contact-method i { /* Placeholder for icon, if you add Font Awesome */
+    font-size: 1.8em;
+    color: var(--color-tertiary);
+  }
+
+  .contact-method h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+    color: var(--color-primary);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .contact-method a {
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .contact-method a:hover {
+    color: var(--color-tertiary);
+  }
+
+  /* Specific styling for WhatsApp number */
+  .whatsapp-link {
+    color: var(--color-whatsapp) !important; /* Force WhatsApp green */
+    font-weight: 700;
+  }
+
+  .whatsapp-method:hover a {
+     color: #20b854 !important; /* Darker green on hover */
+  }
+
+  .contact-text {
+    font-size: 1.05em;
+    margin-bottom: 25px;
+    color: var(--color-text-dark);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 15px;
+    }
+    .super-header {
+      padding: 15px 15px;
+    }
+    .super-header h1 {
+      font-size: 1.8em;
+    }
+    .super-header button {
+      font-size: 0.9em;
+      padding: 8px 18px;
+    }
+    .contact-container {
+      padding: 25px;
+    }
+    .contact-container h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+    .contact-info {
+      gap: 15px;
+    }
+    .contact-method {
+      flex-direction: column; /* Stack content vertically on small screens */
+      gap: 10px;
+      padding: 15px;
+    }
+    .contact-method h3 {
+      font-size: 1.1em;
+    }
+    .contact-method a {
+      font-size: 1em;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="super-header">
+    <h1>Faiz-e-Raza ⚖️ Fatwa AI</h1>
+    <button onclick="window.location.href='fatwa-ai.html';">Go Back</button>
+  </div>
+
+  <div class="contact-container">
+    <h2>Hum Se Rabta Karein</h2>
+    <p class="contact-text">
+      <b> Agar aapke zehan mein koi sawal hai, ya aap Faiz-e-Raza ya KhadimOfAhlesunnat ke bare mein mazeed maloomat chahte hain, toh aap neeche diye gaye tareeqon se hum se rabta kar sakte hain. Hum aapki khidmat ke liye hazir hain!
+    </p>
+
+    <div class="contact-info">
+      <div class="contact-method">
+        <h3>Instagram (Syed Ebad Ali Shah Qadri)</h3>
+        <a href="https://www.instagram.com/syed.ebad.ali.shah" target="_blank">@Syed.Ebad.Ali.Shah</a>
+      </div>
+
+      <div class="contact-method">
+        <h3>Instagram (KhadimOfAhlesunnat)</h3>
+        <a href="https://www.instagram.com/khadimofahlesunnat" target="_blank">@KhadimOfAhlesunnat</a>
+      </div>
+
+      <div class="contact-method whatsapp-method">
+        <h3>WhatsApp Par Rabta Karein</h3>
+        <a href="https://wa.me/923443062524" target="_blank" class="whatsapp-link">+92 344 306 2524</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
