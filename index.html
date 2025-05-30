@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darul Iftaha AhleSunnat | Faiz E Raza AI Fatwa Portal</title>
+<meta name="description" content="Get instant Ahlesunnat fatwas from Darul Iftaha AhleSunnat via AI. Trusted Barelvi rulings with references from Fatawa Razawiyya & Bahar-e-Shariat.">
+<meta name="keywords" content="Faiz E Raza, Darul Iftaha AhleSunnat, Ahlesunnat fatwa, AI fatwa, Islamic fatwa Barelvi, fatawa razawiyya, Bahar e Shariat, Sunni fatwa AI, Ahlesunnat rulings, Faiz E Raza fatwa, Sunni Islamic AI, Ahle Sunnat Wal Jamaat fatwa, AI Darul Ifta, Deeniyat AI assistant, Barelvi Islamic fatwa, Ahlesunnat AI fatwa, Sunni AI chatbot, Faiz-e-Raza.com">
+<meta name="author" content="Faiz-e-Raza Team">
+
+<!-- Open Graph Meta Tags (For Facebook, WhatsApp, etc.) -->
+<meta property="og:title" content="Darul Iftaha AhleSunnat | Faiz E Raza AI Fatwa Portal">
+<meta property="og:description" content="Ask AI-based Barelvi fatwas directly from Darul Iftaha AhleSunnat. Based on Fatawa Razawiyya and Bahar-e-Shariat. 100% Ahlesunnat approved.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.faizeraza.netlify.app/">
+<meta property="og:image" content="https://www.faizeraza.netlify.app/assets/fatwa-banner.jpg">
+<meta property="og:site_name" content="Faiz-e-Raza - Darul Iftaha AhleSunnat">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Darul Iftaha AhleSunnat | Faiz E Raza AI Fatwa Portal">
+<meta name="twitter:description" content="Get fast AI-based Ahlesunnat fatwas with authentic references. Powered by Darul Iftaha AhleSunnat.">
+<meta name="twitter:image" content="https://www.faizeraza.netlify.app/assets/fatwa-banner.jpg">
+<meta name="twitter:site" content="@FaizERaza"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Faiz-e-Raza | Latest Fatwas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Amiri', serif;
+      background: linear-gradient(to bottom, #fbe9e7, #fff);
+      color: #4a148c;
+    }
+    header {
+      background-color: #4a148c;
+      color: white;
+      padding: 20px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+      font-family: 'Roboto', sans-serif;
+    }
+    .menu-icon {
+      cursor: pointer;
+      font-size: 28px;
+    }
+    .dropdown {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+    }
+    .dropdown button {
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      text-align: left;
+      color: #4a148c;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+    .dropdown button:last-child {
+      border-bottom: none;
+    }
+    .fatwa-box {
+      margin: 20px;
+      padding: 20px;
+      background-color: #fff8e1;
+      border-left: 6px solid #880e4f;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .fatwa-box h2 {
+      margin-top: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    .footer-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 30px;
+      font-size: 14px;
+      background: rgba(138, 43, 226, 0.6);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Faiz-e-Raza</h1>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="dropdown" id="menu">
+      <button onclick="location.href='random.html'">Ask Fatwa</button>
+      <button onclick="location.href='random.html'">About</button>
+      <button onclick="location.href='random.html'">Contact</button>
+    </div>
+  </header>  <main id="fatwaContainer"></main>  <button class="footer-btn" onclick="location.href='fatwa-ai.html'">
+    Apne Masail Ka Fatwa Talab Karen
+  </button>  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0DHTlknog2qmBkViOkkqsY7co57fnZKM",
+      authDomain: "faiz-e-raza-kziv0.firebaseapp.com",
+      databaseURL: "https://faiz-e-raza-kziv0-default-rtdb.firebaseio.com",
+      projectId: "faiz-e-raza-kziv0",
+      storageBucket: "faiz-e-raza-kziv0.appspot.com",
+      messagingSenderId: "614396372677",
+      appId: "1:614396372677:web:42ad4e1baedf6bbb6b72ac"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    const fatwaContainer = document.getElementById('fatwaContainer');
+
+    db.ref("fatwas").orderByChild("timestamp").once("value", snapshot => {
+      const fatwas = [];
+      snapshot.forEach(child => {
+        fatwas.push(child.val());
+      });
+      fatwas.reverse().forEach(fatwa => {
+        const box = document.createElement('div');
+        box.className = 'fatwa-box';
+        box.innerHTML = `
+          <h2>📌 Question:</h2>
+          <p>${fatwa.question}</p>
+          <h2>📖 Answer:</h2>
+          <p>${fatwa.answer}</p>
+          <h3>🕰️ Timestamp:</h3>
+          <p>${new Date(fatwa.timestamp).toLocaleString()}</p>
+          <p><em>⚠️ Yeh AI se diya gaya jawab hai. Hamesha kisi mo'tabar Sunni Mufti se bhi tasdeeq farmaayein.</em></p>
+        `;
+        fatwaContainer.appendChild(box);
+      });
+    });
+  </script></body>
+</html>
